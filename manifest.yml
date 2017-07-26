@@ -4,3 +4,5 @@ applications:
   path: build/libs/pal-tracker.jar
   random-route: true
   buildpack: java_buildpack_offline
+  services:
+  - tracker-database

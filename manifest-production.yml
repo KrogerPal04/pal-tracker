@@ -4,3 +4,5 @@ applications:
   path: build/libs/pal-tracker.jar
   host: krogerpal04-pal-tracker
   buildpack: java_buildpack_offline
+  services:
+  - tracker-database
