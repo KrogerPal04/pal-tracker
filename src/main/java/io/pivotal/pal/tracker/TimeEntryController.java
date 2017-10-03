@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/time-entries")
 public class TimeEntryController {
-    
+
     private TimeEntryRepository timeEntriesRepo;
 
     public TimeEntryController(TimeEntryRepository timeEntriesRepo) {

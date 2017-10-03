@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -30,12 +31,12 @@ public class TimeEntryControllerTest {
 
     @Test
     public void testCreate() throws Exception {
-        TimeEntry expected = new TimeEntry(1L, 123, 456, "today", 8);
+        TimeEntry expected = new TimeEntry(1L, 123, 456,  LocalDate.now(), 8);
         doReturn(expected)
             .when(timeEntryRepository)
             .create(any(TimeEntry.class));
 
-        ResponseEntity response = controller.create(new TimeEntry(123, 456, "today", 8));
+        ResponseEntity response = controller.create(new TimeEntry(123, 456, LocalDate.now(), 8));
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(response.getBody()).isEqualTo(expected);
@@ -43,7 +44,7 @@ public class TimeEntryControllerTest {
 
     @Test
     public void testRead() throws Exception {
-        TimeEntry expected = new TimeEntry(1L, 123, 456, "today", 8);
+        TimeEntry expected = new TimeEntry(1L, 123, 456, LocalDate.now(), 8);
         doReturn(expected)
             .when(timeEntryRepository)
             .find(1L);
@@ -66,8 +67,8 @@ public class TimeEntryControllerTest {
     @Test
     public void testList() throws Exception {
         List<TimeEntry> expected = asList(
-            new TimeEntry(1, 123, 456, "today", 8),
-            new TimeEntry(2, 789, 321, "yesterday", 4)
+            new TimeEntry(1, 123, 456, LocalDate.now(), 8),
+            new TimeEntry(2, 789, 321, LocalDate.now().minusDays(1), 4)
         );
         doReturn(expected).when(timeEntryRepository).list();
 
@@ -78,7 +79,7 @@ public class TimeEntryControllerTest {
 
     @Test
     public void testUpdate() throws Exception {
-        TimeEntry expected = new TimeEntry(1, 987, 654, "yesterday", 4);
+        TimeEntry expected = new TimeEntry(1, 987, 654, LocalDate.now().minusDays(1), 4);
         doReturn(expected)
             .when(timeEntryRepository)
             .update(eq(1L), any(TimeEntry.class));
