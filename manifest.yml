@@ -4,5 +4,3 @@ applications:
   path: build/libs/pal-io.pivotal.pal.tracker.tracker.jar
   random-route: true
   buildpack: java_buildpack
-  env:
-    WELCOME_MESSAGE: Hello from Cloud Foundry
