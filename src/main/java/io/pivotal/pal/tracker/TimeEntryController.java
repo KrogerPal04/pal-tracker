@@ -30,6 +30,28 @@ public class TimeEntryController {
         if(timeEntry == null) {
             status = HttpStatus.NOT_FOUND;
         }
-        return new ResponseEntity<>(timeEntryRepository.find(id), status);
+        return new ResponseEntity<>(timeEntry, status);
     }
+
+    @RequestMapping("/list")
+    public ResponseEntity list() {
+        return new ResponseEntity<>(timeEntryRepository.list(), HttpStatus.OK);
+    }
+
+    @RequestMapping("/update")
+    public ResponseEntity update(Long id, TimeEntry timeEntry) {
+        HttpStatus status = HttpStatus.OK;
+        TimeEntry timeEntryReturn = timeEntryRepository.update(id, timeEntry);
+        if(timeEntryReturn == null) {
+            status = HttpStatus.NOT_FOUND;
+        }
+        return new ResponseEntity<>(timeEntryReturn, status);
+    }
+
+    @RequestMapping("/delete")
+    public ResponseEntity delete(Long id) {
+        timeEntryRepository.delete(id);
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    }
+
 }

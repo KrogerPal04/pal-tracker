@@ -63,45 +63,45 @@ public class TimeEntryControllerTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
-//    @Test
-//    public void testList() throws Exception {
-//        List<TimeEntry> expected = asList(
-//            new TimeEntry(1, 123, 456, "today", 8),
-//            new TimeEntry(2, 789, 321, "yesterday", 4)
-//        );
-//        doReturn(expected).when(timeEntryRepository).list();
-//
-//        ResponseEntity<List<TimeEntry>> response = controller.list();
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-//        assertThat(response.getBody()).isEqualTo(expected);
-//    }
-//
-//    @Test
-//    public void testUpdate() throws Exception {
-//        TimeEntry expected = new TimeEntry(1, 987, 654, "yesterday", 4);
-//        doReturn(expected)
-//            .when(timeEntryRepository)
-//            .update(eq(1L), any(TimeEntry.class));
-//
-//        ResponseEntity response = controller.update(1L, expected);
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-//        assertThat(response.getBody()).isEqualTo(expected);
-//    }
-//
-//    @Test
-//    public void testUpdate_NotFound() throws Exception {
-//        doReturn(null)
-//            .when(timeEntryRepository)
-//            .update(eq(1L), any(TimeEntry.class));
-//
-//        ResponseEntity response = controller.update(1L, new TimeEntry());
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-//    }
-//
-//    @Test
-//    public void testDelete() throws Exception {
-//        ResponseEntity<TimeEntry> response = controller.delete(1L);
-//        verify(timeEntryRepository).delete(1L);
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
-//    }
+    @Test
+    public void testList() throws Exception {
+        List<TimeEntry> expected = asList(
+            new TimeEntry(1, 123, 456, "today", 8),
+            new TimeEntry(2, 789, 321, "yesterday", 4)
+        );
+        doReturn(expected).when(timeEntryRepository).list();
+
+        ResponseEntity<List<TimeEntry>> response = controller.list();
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(expected);
+    }
+
+    @Test
+    public void testUpdate() throws Exception {
+        TimeEntry expected = new TimeEntry(1, 987, 654, "yesterday", 4);
+        doReturn(expected)
+            .when(timeEntryRepository)
+            .update(eq(1L), any(TimeEntry.class));
+
+        ResponseEntity response = controller.update(1L, expected);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(expected);
+    }
+
+    @Test
+    public void testUpdate_NotFound() throws Exception {
+        doReturn(null)
+            .when(timeEntryRepository)
+            .update(eq(1L), any(TimeEntry.class));
+
+        ResponseEntity response = controller.update(1L, new TimeEntry());
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+    }
+
+    @Test
+    public void testDelete() throws Exception {
+        ResponseEntity<TimeEntry> response = controller.delete(1L);
+        verify(timeEntryRepository).delete(1L);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+    }
 }
