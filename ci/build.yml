@@ -19,4 +19,4 @@ run:
   - |
     cd pal-tracker
     ./gradlew build
-    cp build/libs/pal-tracker.jar ../build-output
+    cp build/libs/pal-io.pivotal.pal.tracker.tracker.jar ../build-output
