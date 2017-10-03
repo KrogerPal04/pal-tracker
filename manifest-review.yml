@@ -1,0 +1,8 @@
+---
+applications:
+- name: pal-tracker
+  path: build/libs/pal-tracker.jar
+  host: ps-pal-tracker-review
+  buildpack: java_buildpack_offline
+
+
