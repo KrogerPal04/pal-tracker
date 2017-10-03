@@ -3,7 +3,7 @@ package io.pivotal.pal.tracker;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/timeEntry")
@@ -18,12 +18,12 @@ public class TimeEntryController {
         this.timeEntryRepository = timeEntryRepository;
     }
 
-    @RequestMapping("/create")
+    @PostMapping("/create")
     public ResponseEntity create(TimeEntry timeEntry) {
         return new ResponseEntity<>(timeEntryRepository.create(timeEntry), HttpStatus.CREATED);
     }
 
-    @RequestMapping("/read")
+    @GetMapping("/read")
     public ResponseEntity read(Long id) {
         HttpStatus status = HttpStatus.OK;
         TimeEntry timeEntry = timeEntryRepository.find(id);
@@ -33,12 +33,12 @@ public class TimeEntryController {
         return new ResponseEntity<>(timeEntry, status);
     }
 
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public ResponseEntity list() {
         return new ResponseEntity<>(timeEntryRepository.list(), HttpStatus.OK);
     }
 
-    @RequestMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity update(Long id, TimeEntry timeEntry) {
         HttpStatus status = HttpStatus.OK;
         TimeEntry timeEntryReturn = timeEntryRepository.update(id, timeEntry);
@@ -48,7 +48,7 @@ public class TimeEntryController {
         return new ResponseEntity<>(timeEntryReturn, status);
     }
 
-    @RequestMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity delete(Long id) {
         timeEntryRepository.delete(id);
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
