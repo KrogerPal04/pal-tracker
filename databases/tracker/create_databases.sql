@@ -1,8 +1,6 @@
 DROP DATABASE IF EXISTS tracker_dev;
 DROP DATABASE IF EXISTS tracker_test;
 
-DROP USER tracker@localhost;
-
 CREATE DATABASE tracker_dev;
 CREATE DATABASE tracker_test;
 
