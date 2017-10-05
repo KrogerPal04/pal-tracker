@@ -6,3 +6,5 @@ applications:
   buildpack: java_buildpack_offline
   services:
   - tracker-database
+  env:
+    SECURITY_FORCE_HTTPS: true
